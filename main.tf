@@ -65,9 +65,19 @@ resource "aws_route_table" "private" {
   }
 }
 // TGW Route Table
-resource "aws_ec2_transit_gateway_route" "security_zone_TGW_route" {
-  provider                    = aws.us-east-1
-  destination_cidr_block      = "10.230.0.0/16" # Adjust CIDR block as needed
+resource "aws_ec2_transit_gateway_route" "security_zone_TGW_routes" {
+  for_each = toset([
+    "10.230.0.0/16",  # Region 1
+    "10.231.0.0/16",  # Region 2
+    "10.232.0.0/16",  # Region 3
+    "10.233.0.0/16",  # Region 4
+    "10.234.0.0/16",  # Region 5
+    "10.235.0.0/16",  # Region 6
+    "10.236.0.0/16",  # Region 7
+  ])
+
+  provider                    = aws.ap-northeast-1
+  destination_cidr_block      = each.key
   transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.tgw_rt_us_east_1.id
   transit_gateway_attachment_id  = aws_ec2_transit_gateway_peering_attachment.us_east_1_to_ap_northeast_1.id
 }
