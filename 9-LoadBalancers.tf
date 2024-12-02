@@ -15,7 +15,7 @@ resource "aws_lb" "app1_alb" {
     Service = "app1"
   }
 }
-resource "aws_lb_listener" "http" {
+resource "aws_lb_listener" "app1_http" {
   load_balancer_arn = aws_lb.app1_alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -25,17 +25,6 @@ resource "aws_lb_listener" "http" {
     target_group_arn = aws_lb_target_group.app1_tg.arn
   }
 }
-resource "aws_lb_listener" "https" {
-   load_balancer_arn = aws_lb.app1_alb.arn
-   port              = 443
-   protocol          = "HTTPS"
-   ssl_policy        = "ELBSecurityPolicy-2016-08" 
-   certificate_arn   = data.aws_acm_certificate.cert.arn
-  default_action {
-     type             = "forward"
-     target_group_arn = aws_lb_target_group.app1_tg.arn
-   }
- }
 
 # New York Load Balancer
 resource "aws_lb" "app2_alb" {
@@ -54,7 +43,7 @@ resource "aws_lb" "app2_alb" {
     Service = "app2"
   }
 }
-resource "aws_lb_listener" "http" {
+resource "aws_lb_listener" "app2_http" {
   load_balancer_arn = aws_lb.app2_alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -64,17 +53,6 @@ resource "aws_lb_listener" "http" {
     target_group_arn = aws_lb_target_group.app2_tg.arn
   }
 }
-resource "aws_lb_listener" "https" {
-   load_balancer_arn = aws_lb.app2_alb.arn
-   port              = 443
-   protocol          = "HTTPS"
-   ssl_policy        = "ELBSecurityPolicy-2016-08" 
-   certificate_arn   = data.aws_acm_certificate.cert.arn
-  default_action {
-     type             = "forward"
-     target_group_arn = aws_lb_target_group.app2_tg.arn
-   }
- }
 
 # London Load Balancer
 resource "aws_lb" "app3_alb" {
@@ -93,7 +71,7 @@ resource "aws_lb" "app3_alb" {
     Service = "app3"
   }
 }
-resource "aws_lb_listener" "http" {
+resource "aws_lb_listener" "app3_http" {
   load_balancer_arn = aws_lb.app3_alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -103,17 +81,6 @@ resource "aws_lb_listener" "http" {
     target_group_arn = aws_lb_target_group.app3_tg.arn
   }
 }
-resource "aws_lb_listener" "https" {
-   load_balancer_arn = aws_lb.app3_alb.arn
-   port              = 443
-   protocol          = "HTTPS"
-   ssl_policy        = "ELBSecurityPolicy-2016-08" 
-   certificate_arn   = data.aws_acm_certificate.cert.arn
-  default_action {
-     type             = "forward"
-     target_group_arn = aws_lb_target_group.app3_tg.arn
-   }
- }
 
 # Sao Paolo Load Balancer
 resource "aws_lb" "app4_alb" {
@@ -132,7 +99,7 @@ resource "aws_lb" "app4_alb" {
     Service = "app4"
   }
 }
-resource "aws_lb_listener" "http" {
+resource "aws_lb_listener" "app4_http" {
   load_balancer_arn = aws_lb.app4_alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -142,17 +109,6 @@ resource "aws_lb_listener" "http" {
     target_group_arn = aws_lb_target_group.app4_tg.arn
   }
 }
-resource "aws_lb_listener" "https" {
-   load_balancer_arn = aws_lb.app4_alb.arn
-   port              = 443
-   protocol          = "HTTPS"
-   ssl_policy        = "ELBSecurityPolicy-2016-08" 
-   certificate_arn   = data.aws_acm_certificate.cert.arn
-  default_action {
-     type             = "forward"
-     target_group_arn = aws_lb_target_group.app4_tg.arn
-   }
- }
 
 # Sydney Load Balancer
 resource "aws_lb" "app5_alb" {
@@ -171,7 +127,7 @@ resource "aws_lb" "app5_alb" {
     Service = "app5"
   }
 }
-resource "aws_lb_listener" "http" {
+resource "aws_lb_listener" "app5_http" {
   load_balancer_arn = aws_lb.app5_alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -181,17 +137,6 @@ resource "aws_lb_listener" "http" {
     target_group_arn = aws_lb_target_group.app5_tg.arn
   }
 }
-resource "aws_lb_listener" "https" {
-   load_balancer_arn = aws_lb.app5_alb.arn
-   port              = 443
-   protocol          = "HTTPS"
-   ssl_policy        = "ELBSecurityPolicy-2016-08" 
-   certificate_arn   = data.aws_acm_certificate.cert.arn
-  default_action {
-     type             = "forward"
-     target_group_arn = aws_lb_target_group.app5_tg.arn
-   }
- }
 
 # Hong Kong Load Balancer
 resource "aws_lb" "app6_alb" {
@@ -210,7 +155,7 @@ resource "aws_lb" "app6_alb" {
     Service = "app6"
   }
 }
-resource "aws_lb_listener" "http" {
+resource "aws_lb_listener" "app6_http" {
   load_balancer_arn = aws_lb.app6_alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -220,17 +165,6 @@ resource "aws_lb_listener" "http" {
     target_group_arn = aws_lb_target_group.app6_tg.arn
   }
 }
-resource "aws_lb_listener" "https" {
-   load_balancer_arn = aws_lb.app6_alb.arn
-   port              = 443
-   protocol          = "HTTPS"
-   ssl_policy        = "ELBSecurityPolicy-2016-08" 
-   certificate_arn   = data.aws_acm_certificate.cert.arn
-  default_action {
-     type             = "forward"
-     target_group_arn = aws_lb_target_group.app6_tg.arn
-   }
- }
 
 # California Load Balancer
 resource "aws_lb" "app7_alb" {
@@ -249,7 +183,7 @@ resource "aws_lb" "app7_alb" {
     Service = "app7"
   }
 }
-resource "aws_lb_listener" "http" {
+resource "aws_lb_listener" "app7_http" {
   load_balancer_arn = aws_lb.app7_alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -259,14 +193,3 @@ resource "aws_lb_listener" "http" {
     target_group_arn = aws_lb_target_group.app7_tg.arn
   }
 }
-resource "aws_lb_listener" "https" {
-   load_balancer_arn = aws_lb.app7_alb.arn
-   port              = 443
-   protocol          = "HTTPS"
-   ssl_policy        = "ELBSecurityPolicy-2016-08" 
-   certificate_arn   = data.aws_acm_certificate.cert.arn
-  default_action {
-     type             = "forward"
-     target_group_arn = aws_lb_target_group.app7_tg.arn
-   }
- }

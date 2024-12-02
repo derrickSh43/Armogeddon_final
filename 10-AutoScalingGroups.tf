@@ -11,7 +11,6 @@ resource "aws_autoscaling_group" "app1_asg" {
   health_check_type          = "ELB"
   health_check_grace_period  = 300
   force_delete               = true
-  target_group_arns          = [aws_lb_target_group.app1_tg.arn]
 
   launch_template {
     id      = aws_launch_template.app1_LT.id
@@ -74,8 +73,8 @@ resource "aws_autoscaling_policy" "app1_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app1_asg_attachment" {
-  autoscaling_group_name = aws_autoscaling_group.app1_asg.name
-  lb_target_group_arn   = aws_lb_target_group.app1_tg.arn
+  autoscaling_group_name = aws_autoscaling_group.app1_asg.id
+  lb_target_group_arn    = aws_lb_target_group.app1_tg.arn
 }
 
 #New York Auto Scaling Group 
@@ -91,7 +90,6 @@ resource "aws_autoscaling_group" "app2_asg" {
   health_check_type          = "ELB"
   health_check_grace_period  = 300
   force_delete               = true
-  target_group_arns          = [aws_lb_target_group.app2_tg.arn]
 
   launch_template {
     id      = aws_launch_template.app2_LT.id
@@ -152,9 +150,10 @@ resource "aws_autoscaling_policy" "app2_scaling_policy" {
 }
 
 # Enabling instance scale-in protection
+# Create a new ALB Target Group attachment
 resource "aws_autoscaling_attachment" "app2_asg_attachment" {
-  autoscaling_group_name = aws_autoscaling_group.app2_asg.name
-  lb_target_group_arn   = aws_lb_target_group.app2_tg.arn
+  autoscaling_group_name = aws_autoscaling_group.app2_asg.id
+  lb_target_group_arn    = aws_lb_target_group.app2_tg.arn
 }
 
 #London Auto Scaling Group 
@@ -170,7 +169,6 @@ resource "aws_autoscaling_group" "app3_asg" {
   health_check_type          = "ELB"
   health_check_grace_period  = 300
   force_delete               = true
-  target_group_arns          = [aws_lb_target_group.app3_tg.arn]
 
   launch_template {
     id      = aws_launch_template.app3_LT.id
@@ -232,8 +230,8 @@ resource "aws_autoscaling_policy" "app3_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app3_asg_attachment" {
-  autoscaling_group_name = aws_autoscaling_group.app3_asg.name
-  lb_target_group_arn   = aws_lb_target_group.app3_tg.arn
+  autoscaling_group_name = aws_autoscaling_group.app3_asg.id
+  lb_target_group_arn    = aws_lb_target_group.app3_tg.arn
 }
 
 #Sao Paolo Auto Scaling Group 
@@ -249,7 +247,6 @@ resource "aws_autoscaling_group" "app4_asg" {
   health_check_type          = "ELB"
   health_check_grace_period  = 300
   force_delete               = true
-  target_group_arns          = [aws_lb_target_group.app4_tg.arn]
 
   launch_template {
     id      = aws_launch_template.app4_LT.id
@@ -311,9 +308,8 @@ resource "aws_autoscaling_policy" "app4_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app4_asg_attachment" {
-  autoscaling_group_name = aws_autoscaling_group.app4_asg.name
-  lb_target_group_arn   = aws_lb_target_group.app4_tg.arn
-
+  autoscaling_group_name = aws_autoscaling_group.app4_asg.id
+  lb_target_group_arn    = aws_lb_target_group.app4_tg.arn
 }
 
 #Sydney Auto Scaling Group
@@ -329,7 +325,6 @@ resource "aws_autoscaling_group" "app5_asg" {
   health_check_type          = "ELB"
   health_check_grace_period  = 300
   force_delete               = true
-  target_group_arns          = [aws_lb_target_group.app5_tg.arn]
 
   launch_template {
     id      = aws_launch_template.app5_LT.id
@@ -391,8 +386,8 @@ resource "aws_autoscaling_policy" "app5_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app5_asg_attachment" {
-  autoscaling_group_name = aws_autoscaling_group.app5_asg.name
-  lb_target_group_arn   = aws_lb_target_group.app5_tg.arn
+  autoscaling_group_name = aws_autoscaling_group.app5_asg.id
+  lb_target_group_arn    = aws_lb_target_group.app5_tg.arn
 }
 
 #Hong Kong Auto Scaling Group
@@ -408,7 +403,6 @@ resource "aws_autoscaling_group" "app6_asg" {
   health_check_type          = "ELB"
   health_check_grace_period  = 300
   force_delete               = true
-  target_group_arns          = [aws_lb_target_group.app6_tg.arn]
 
   launch_template {
     id      = aws_launch_template.app6_LT.id
@@ -425,7 +419,7 @@ resource "aws_autoscaling_group" "app6_asg" {
     heartbeat_timeout     = 60
     notification_metadata = "{\"key\":\"value\"}"
   }
-
+  
   # Instance protection for terminating
   initial_lifecycle_hook {
     name                  = "scale-in-protection"
@@ -470,8 +464,8 @@ resource "aws_autoscaling_policy" "app6_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app6_asg_attachment" {
-  autoscaling_group_name = aws_autoscaling_group.app6_asg.name
-  lb_target_group_arn   = aws_lb_target_group.app6_tg.arn
+  autoscaling_group_name = aws_autoscaling_group.app6_asg.id
+  lb_target_group_arn    = aws_lb_target_group.app6_tg.arn
 }
 
 #California Auto Scaling Group 
@@ -487,7 +481,6 @@ resource "aws_autoscaling_group" "app7_asg" {
   health_check_type          = "ELB"
   health_check_grace_period  = 300
   force_delete               = true
-  target_group_arns          = [aws_lb_target_group.app7_tg.arn]
 
   launch_template {
     id      = aws_launch_template.app7_LT.id
@@ -549,6 +542,6 @@ resource "aws_autoscaling_policy" "app7_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app7_asg_attachment" {
-  autoscaling_group_name = aws_autoscaling_group.app7_asg.name
-  lb_target_group_arn   = aws_lb_target_group.app7_tg.arn
+  autoscaling_group_name = aws_autoscaling_group.app7_asg.id
+  lb_target_group_arn    = aws_lb_target_group.app7_tg.arn
 }

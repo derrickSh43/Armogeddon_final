@@ -76,7 +76,7 @@ resource "aws_ec2_transit_gateway_route" "security_zone_TGW_routes" {
     "10.236.0.0/16",  # Region 7
   ])
 
-  provider                    = aws.ap-northeast-1
+  provider                    = aws.tokyo
   destination_cidr_block      = each.key
   transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.tgw_rt_us_east_1.id
   transit_gateway_attachment_id  = aws_ec2_transit_gateway_peering_attachment.us_east_1_to_ap_northeast_1.id
