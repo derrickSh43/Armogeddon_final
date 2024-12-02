@@ -228,3 +228,12 @@ resource "aws_launch_template" "app7_LT" {
     create_before_destroy = true
   }
 }
+
+
+ ################################################################### 
+// replace the userdata with this secion when all corrections are made
+  # Define the user data script with Terraform templating
+  #user_data = templatefile("${path.module}/promtail.sh.tpl", {
+  #  loki_private_ip = aws_instance.SIEM_Server.private_ip
+  #})
+  ################################################################### 

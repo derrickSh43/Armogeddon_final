@@ -165,7 +165,7 @@ resource "aws_instance" "SIEM_Server" {
     volume_type = "gp3"  # General Purpose SSD
   }
 
-  user_data = filebase64("userdata.sh")
+  user_data = filebase64("SIEMuserdata.sh")
   tags = {
     Name = "SIEM_Server"
   }
